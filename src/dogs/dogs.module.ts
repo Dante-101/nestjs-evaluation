@@ -12,13 +12,20 @@ export class DogsModule {
     constructor() {
         console.log('DogModule Initialized')
     }
-    static async forRoot(options: object): Promise<DynamicModule> {
-        console.log('Got options ' + JSON.stringify(options, null, 2))
-        return {
-            module: DogsModule,
-            providers: [DogsService],
-            exports: [DogsService],
-            controllers: [DogsController]
-        }
+
+    static async dynamicModule(options: object): Promise<DynamicModule> {
+        console.log('DogModule dynamic module options received ' + JSON.stringify(options))
+        return new Promise<DynamicModule>((resolve, reject) => {
+            console.log('DogModule dynamic module get started')
+            setTimeout(() => {
+                console.log('DogModule dynamic module get done')
+                resolve({
+                    module: DogsModule,
+                    providers: [DogsService],
+                    exports: [DogsService],
+                    controllers: [DogsController]
+                })
+            }, 1000)
+        })
     }
 }

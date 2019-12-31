@@ -17,4 +17,8 @@ export class CatsService {
     findAll(): Cat[] {
         return this.cats
     }
+
+    findOne(name: string): Cat | undefined {
+        return this.cats.find(c => c.name === name)
+    }
 }

@@ -1,3 +1,12 @@
-import { Cat } from '../interfaces/cats.interface'
+import { IsInt, IsString } from 'class-validator'
 
-export type CreateCatDto = Cat
+export class CreateCatDto {
+    @IsString()
+    readonly name: string
+
+    @IsInt()
+    readonly age: number
+
+    @IsString()
+    readonly breed: string
+}
