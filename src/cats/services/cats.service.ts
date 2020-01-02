@@ -18,7 +18,7 @@ export class CatsService {
         return this.cats
     }
 
-    findOne(name: string): Cat | undefined {
-        return this.cats.find(c => c.name === name)
+    findOne(id: number): Cat | undefined {
+        return this.cats.find(c => c.id === id)
     }
 }

@@ -18,6 +18,12 @@ export class CatsController {
         this.catsService.create(createCatDto)
     }
 
+    @Post('new')
+    @UsePipes(new ValidationPipe({ transform: true }))
+    async createNew(@Body() createCatDto: CreateCatDto) {
+        this.catsService.create(createCatDto)
+    }
+
     @Get()
     async findAll(): Promise<Cat[]> {
         return this.catsService.findAll()
@@ -29,8 +35,7 @@ export class CatsController {
     }
 
     @Get(':id')
-    async findOne(@Param('id', new ParseIntPipe()) id) {
+    async findOne(@Param('id', ParseIntPipe) id: number) {
         return await this.catsService.findOne(id)
     }
-
 }
