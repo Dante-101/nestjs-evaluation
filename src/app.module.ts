@@ -4,7 +4,7 @@ import { CatsController } from './cats/controllers/cats.controller'
 import { CatsModule } from './cats/cats.module'
 import { DogsController } from './dogs/controllers/dogs.controller'
 import { DogsModule } from './dogs/dogs.module'
-import { LoggerMiddleware } from './middleware/logger.middleware'
+import { LoggerMiddleware } from './framework/middleware/logger.middleware'
 
 @Module({
   imports: [CatsModule, DogsModule.dynamicModule({ field: 'value' })]
