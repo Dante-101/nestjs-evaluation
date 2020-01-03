@@ -4,21 +4,21 @@ import { Cat } from '../interfaces/cats.interface'
 
 @Injectable()
 export class CatsService {
-    private readonly cats: Cat[] = []
+    private readonly cats: Map<number, Cat> = new Map()
 
     constructor() {
         console.log('CatsService Initialized')
     }
 
     create(cat: Cat) {
-        this.cats.push(cat)
+        this.cats.set(cat.id, cat)
     }
 
     findAll(): Cat[] {
-        return this.cats
+        return Array.from(this.cats.values())
     }
 
     findOne(id: number): Cat | undefined {
-        return this.cats.find(c => c.id === id)
+        return this.cats.get(id)
     }
 }

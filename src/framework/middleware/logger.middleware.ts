@@ -9,7 +9,7 @@ export class LoggerMiddleware implements NestMiddleware {
     }
 
     use(req: Request, res: Response, next: NextFunction) {
-        console.log('Requesting ' + req.originalUrl)
+        console.log('LoggerMiddleware - Requesting ' + req.originalUrl)
         next()
     }
 }

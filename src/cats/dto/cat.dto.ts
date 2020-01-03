@@ -9,9 +9,9 @@ export class CreateCatDto {
 
     @IsOptional()
     @IsInt()
-    readonly age: number
+    readonly age?: number
 
     @IsOptional()
     @IsString()
-    readonly breed: string
+    readonly breed?: string
 }

@@ -1,0 +1,1 @@
+export const NON_CLASS_TOKEN = 'NON_CLASS_TOKEN'

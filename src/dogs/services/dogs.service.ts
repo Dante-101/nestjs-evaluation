@@ -3,10 +3,11 @@ import { Dog } from '../interfaces/dogs.interface'
 
 @Injectable()
 export class DogsService {
+    private readonly dogs: Dog[] = []
+
     constructor() {
         console.log('DogsService Initialized')
     }
-    private readonly dogs: Dog[] = []
 
     create(dog: Dog) {
         this.dogs.push(dog)

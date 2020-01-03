@@ -5,7 +5,10 @@ import { CatsService } from './services/cats.service'
 
 @Module({
     controllers: [CatsController],
-    providers: [CatsService],
+    providers: [{
+        provide: CatsService,
+        useClass: CatsService
+    }],
     exports: [CatsService]
 })
 export class CatsModule {

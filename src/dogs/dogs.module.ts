@@ -1,5 +1,6 @@
-import { Module, DynamicModule } from '@nestjs/common'
+import { DynamicModule } from '@nestjs/common'
 
+import { NON_CLASS_TOKEN } from '../const'
 import { DogsController } from './controllers/dogs.controller'
 import { DogsService } from './services/dogs.service'
 
@@ -21,7 +22,13 @@ export class DogsModule {
                 console.log('DogModule dynamic module get done')
                 resolve({
                     module: DogsModule,
-                    providers: [DogsService],
+                    providers: [
+                        DogsService,
+                        {
+                            provide: NON_CLASS_TOKEN,
+                            useValue: { token: 'Did you get this token?' }
+                        }
+                    ],
                     exports: [DogsService],
                     controllers: [DogsController]
                 })

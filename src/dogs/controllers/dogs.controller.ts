@@ -1,16 +1,19 @@
-import { Body, Controller, Get, Post } from '@nestjs/common'
+import { Body, Controller, Get, Inject, Post } from '@nestjs/common'
 
-import { DogsService } from '../services/dogs.service'
+import { NON_CLASS_TOKEN } from '../../const'
 import { CreateDogDto } from '../dto/dogs.dto'
+import { DogsService } from '../services/dogs.service'
 
 @Controller('dogs')
 export class DogsController {
-    constructor(private readonly dogsService: DogsService) {
+    constructor(@Inject(NON_CLASS_TOKEN) private readonly value: object, private readonly dogsService: DogsService) {
         console.log('DogsController Initialized')
+        console.log(`Received ${NON_CLASS_TOKEN} with value ${JSON.stringify(this.value)}`)
     }
 
     @Get()
     findAll() {
+
         return this.dogsService.findAll()
     }
 
