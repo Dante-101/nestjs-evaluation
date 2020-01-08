@@ -16,7 +16,7 @@ export class DogsModule {
 
     static async dynamicModule(options: object): Promise<DynamicModule> {
         console.log('DogModule dynamic module options received ' + JSON.stringify(options))
-        return new Promise<DynamicModule>((resolve, reject) => {
+        return new Promise<DynamicModule>((resolve) => {
             console.log('DogModule dynamic module get started')
             setTimeout(() => {
                 console.log('DogModule dynamic module get done')
@@ -26,7 +26,9 @@ export class DogsModule {
                         DogsService,
                         {
                             provide: NON_CLASS_TOKEN,
-                            useValue: { token: 'Did you get this token?' }
+                            useFactory: async () => new Promise<{ token: string }>((res) => {
+                                setTimeout(() => res({ token: 'Did you get this token?' }), 1000)
+                            })
                         }
                     ],
                     exports: [DogsService],
