@@ -1,6 +1,10 @@
-import { IsInt, IsString, IsOptional } from 'class-validator'
+import { IsInt, IsOptional, IsString } from 'class-validator'
 
 export class CreateCatDto {
+    constructor() {
+        console.log('CreateCatDto Initialized')
+    }
+
     @IsInt()
     id: number
 
