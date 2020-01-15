@@ -28,7 +28,7 @@ import { CatsService } from '../services/cats.service'
 export class CatsController {
     constructor(private readonly catsService: CatsService) {
         console.log('CatsController Initialized')
-        this.catsService.create({ id: 1, name: 'Alex' })
+        // this.catsService.create({ id: 1, name: 'Alex' })
     }
 
     @Post()
