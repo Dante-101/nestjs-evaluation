@@ -16,8 +16,7 @@ import { LoggerMiddleware } from './framework/middleware/logger.middleware'
       provide: NON_CLASS_TOKEN,
       useValue: { token: 'Did you get this token?' }
     }
-  ],
-  controllers: [AuthController]
+  ]
 })
 export class AppModule implements NestModule {
   constructor() {
